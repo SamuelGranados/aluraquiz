@@ -1,21 +1,16 @@
-import pageStyle from "./page.module.css";
-import { AluraQuizLogo } from "./components/AluraquizLogo";
+import pageStyles from "./page.module.css";
+import Link from "next/link";
 import { Footer } from "./components/Footer";
 import { Card } from "./components/Card";
+import { LogoPosicao } from "./components/LogoPosicao";
 // JSL == HTML do React 
 
 export default function Page() {
     return (
         
-<main className={pageStyle.screen} style={{flex: 1 }}>
-    <section className={pageStyle.container}>
-    <div style={{ 
-        display: "flex", 
-        justifyContent: "center",
-        marginBottom: "24px" 
-        }}>
-    <AluraQuizLogo />
-    </div>
+<main className={pageStyles.screen} style={{flex: 1 }}>
+    <section className={pageStyles.container}>
+    <LogoPosicao />
     <Card
      headerTitle="Teste suas habilidades"
     >
@@ -25,9 +20,9 @@ export default function Page() {
         <p>
             FÓRMULARIO / BOTÃOooo
         </p>
-        <a href="/game">
+        <Link href="/game">
             Jogar
-        </a>
+        </Link>
     </Card>
     <Footer />
     </section>
