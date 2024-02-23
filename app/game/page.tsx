@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
+
 import { Card } from "../components/Card";
 import { Footer } from "../components/Footer";
 import { LogoPosicao } from "../components/LogoPosicao";
@@ -17,6 +19,7 @@ const answerStates = {
 } as const ;
 
 export default function GameScreen() {
+  const router = useRouter();
   const [answerState, setAnswerState] = React.useState<keyof typeof answerStates>(answerStates.DEFAULT);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [userAnswers, setUserAnswers] = React.useState([]);
@@ -72,6 +75,7 @@ export default function GameScreen() {
                       }, 0);
 
                       alert(`Você concluiu o desafio! e acertou ${totalPoints}`);
+                      router.push("/");
                       return;
                     }
                     setCurrentQuestion(currentQuestion + 1);
@@ -80,11 +84,15 @@ export default function GameScreen() {
                  }}
                 >
                   {question.alternatives.map((alternative, index) => (
-                   <Alternative 
-                    key={alternative + index}
-                    label={alternative}
-                    order={index}
-                   />
+                    <div
+                     style={{marginBottom: "8px",}}
+                    >
+                      <Alternative 
+                      key={alternative + index}
+                      label={alternative}
+                      order={index}
+                      />
+                    </div>
                   ))}
                   {answerState === answerStates.DEFAULT && (
                     <button>

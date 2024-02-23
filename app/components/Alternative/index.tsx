@@ -6,11 +6,13 @@ interface AlternativeProps {
 }
 
 export function Alternative(props: AlternativeProps){
+    const id = `alternative-${props.order}`;
     return (
-    <label className={styles.components}>
+    <label htmlFor={id} className={styles.components} tabIndex={0}>
                 <input 
+                tabIndex={-1}
                 type="radio" 
-                id={`alternative-${props.order}`}
+                id={id}
                 name="alternative" 
                 defaultValue={props.order}
                 />
